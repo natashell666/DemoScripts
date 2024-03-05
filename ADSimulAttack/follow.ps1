@@ -45,5 +45,6 @@ $malwLessExecutable = Join-Path -Path $extractPath -ChildPath "MalwLess.exe"
 }
 
 Set-Location -Path "C:\"
+Remove-Item -Path $jsonFilesPath\*.json -Force
 Remove-Item -Path $outputPath -Force
 Remove-Item -Path $extractPath -Recurse -Force
